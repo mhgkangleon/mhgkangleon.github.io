@@ -413,7 +413,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
-.stats-strip { background: var(--white); border-bottom: 1px solid var(--border); padding: 35px 64px 55px; }
+.stats-strip { background: var(--white); border-bottom: 1px solid var(--border); padding: 30px 64px 55px; }
 .stats-inner { max-width: 1000px; margin: 0 auto; display: grid; }
 .stat { text-align: center; padding: 0 24px; border-right: 1px solid var(--border); }
 .stat:last-child { border-right: none; }
@@ -544,7 +544,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   .btn-primary, .btn-ghost { font-size: 11px; padding: 9px 16px; }
   .scroll-hint { display: none; }
 
-  .stats-strip { padding: 32px 20px 42px; }
+  .stats-strip { padding: 25px 20px 42px; }
   .stats-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 24px 0; }
   .stat { padding: 0 12px; border-right: none; }
   .stat:nth-child(odd) { border-right: 1px solid var(--border); }
@@ -615,7 +615,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   .hero-desc { font-size: 14px; max-width: 100%; margin-bottom: 36px; }
   .scroll-hint { display: none; }
 
-  .stats-strip { padding: 36px 28px 46px; }
+  .stats-strip { padding: 25px 28px 46px; }
   .stats-inner { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 0; }
   .stat { padding: 0 16px; border-right: none; }
   .stat:nth-child(odd) { border-right: 1px solid var(--border); }
@@ -667,13 +667,13 @@ nav.scrolled { border-bottom-color: var(--border); }
   .nav-links { gap: 20px; }
   .nav-links a { font-size: 10px; }
 
-  .hero { padding: 90px 0 80px; }
+  .hero { min-height: 90svh; padding: 90px 0 80px; }
   .hero-inner { padding: 0 40px; }
   .hero h1 { font-size: clamp(56px, 9vw, 80px); }
   .hero h1 .line2 { padding-left: 56px; }
   .scroll-hint { right: 40px; }
 
-  .stats-strip { padding: 36px 40px 50px; }
+  .stats-strip { padding: 25px 40px 50px; }
   .stats-inner { grid-template-columns: repeat(4, 1fr) !important; }
   .stat-number { font-size: 42px; }
 
