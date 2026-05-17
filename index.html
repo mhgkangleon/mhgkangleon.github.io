@@ -26,6 +26,13 @@ const RESUME = {
   email:      "maryhyragean.kangleon@gmail.com",
   linkedin:   "https://www.linkedin.com/in/mary-hyra-gean-kangleon-7a131b18a",
   location:   "Cebu, Philippines",
+
+  /* ── CV DOWNLOAD ──
+     Upload your CV file to the same GitHub folder as index.html.
+     Then set the filename below (e.g. "Mary_Kangleon_CV.pdf").
+     Leave it as "" to hide the Download CV button entirely. */
+  cvFile:     "Mary_Kangleon_CV.pdf",
+
   heroTag:    "QA Consultant · ISTQB-CTFL Certified · Cebu, Philippines",
   heroTagline:"Quality is not a phase. It's the whole point.",
 
@@ -347,6 +354,30 @@ nav.scrolled { border-bottom-color: var(--border); }
 .nav-drawer a:last-child { border-bottom: none; }
 .nav-drawer a:hover { color: var(--rose); }
 
+/* X close button inside drawer */
+.drawer-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--plum);
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.drawer-close:hover { background: var(--blush); }
+.drawer-close svg { width: 22px; height: 22px; }
+
+/* Tap-away backdrop */
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: transparent;
+}
+.nav-backdrop.open { display: block; }
+
 .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 100px 0 80px; position: relative; overflow: hidden; background: var(--plum-dk); }
 .blob { position: absolute; border-radius: 50%; pointer-events: none; }
 .blob-1 { width: 700px; height: 700px; top: -200px; right: -180px; background: radial-gradient(circle at 40% 40%, #7A3659 0%, #3A1A2E 70%); animation: float1 8s ease-in-out infinite; }
@@ -370,6 +401,12 @@ nav.scrolled { border-bottom-color: var(--border); }
 .btn-primary:hover { background: #D4A57A; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(196,149,106,0.35); }
 .btn-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #EED8E4; padding: 10px 20px; border-radius: 40px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 400; border: 1px solid rgba(255,255,255,0.45); transition: all 0.3s; }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: var(--white); transform: translateY(-2px); }
+.btn-cv { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #EED8E4; padding: 10px 20px; border-radius: 40px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 400; border: 1px solid rgba(255,255,255,0.45); transition: all 0.3s; }
+.btn-cv:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.7); color: var(--white); transform: translateY(-2px); }
+.btn-cv svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-link-cv { display: flex; align-items: center; gap: 10px; color: #EED8E4; text-decoration: none; font-size: 13px; border: 1px solid rgba(255,255,255,0.35); padding: 12px 24px; border-radius: 40px; transition: all 0.2s; }
+.contact-link-cv:hover { color: var(--gold); border-color: var(--gold); }
+.contact-link-cv svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .scroll-hint { position: absolute; bottom: 36px; right: 64px; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
 .scroll-hint span { font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; color: #C8A8B8; writing-mode: vertical-rl; }
 .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollLine 2s ease-in-out infinite; }
@@ -635,7 +672,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   .hero h1 .line2 { padding-left: 56px; }
   .scroll-hint { right: 40px; }
 
-  .stats-strip { padding: 36px 40px; }
+  .stats-strip { padding: 36px 40px 48px; }
   .stats-inner { grid-template-columns: repeat(4, 1fr) !important; }
   .stat-number { font-size: 42px; }
 
@@ -721,12 +758,16 @@ document.getElementById('app').innerHTML = `
   </button>
 </nav>
 <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
-  <a href="#about"         class="drawer-link">About</a>
-  <a href="#experience"    class="drawer-link">Experience</a>
-  <a href="#skills"        class="drawer-link">Skills</a>
-  <a href="#certifications"class="drawer-link">Certifications</a>
-  <a href="#education"     class="drawer-link">Education</a>
+  <button class="drawer-close" id="drawer-close" aria-label="Close navigation menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#about"          class="drawer-link">About</a>
+  <a href="#experience"     class="drawer-link">Experience</a>
+  <a href="#skills"         class="drawer-link">Skills</a>
+  <a href="#certifications" class="drawer-link">Certifications</a>
+  <a href="#education"      class="drawer-link">Education</a>
 </div>
+<div class="nav-backdrop" id="nav-backdrop"></div>
 
 <!-- HERO -->
 <header class="hero">
@@ -739,6 +780,7 @@ document.getElementById('app').innerHTML = `
     <div class="hero-ctas">
       <a href="mailto:${RESUME.email}" class="btn-primary">Get in touch</a>
       <a href="${RESUME.linkedin}" target="_blank" class="btn-ghost">${svg('linkedin')} LinkedIn</a>
+      ${RESUME.cvFile ? `<a href="${RESUME.cvFile}" download class="btn-cv"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download CV</a>` : ''}
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -873,7 +915,7 @@ document.getElementById('app').innerHTML = `
   <div class="contact-links">
     <a href="mailto:${RESUME.email}" class="contact-link">${svg('email')} ${RESUME.email}</a>
     <a href="${RESUME.linkedin}" target="_blank" class="contact-link">${svg('linkedin')} LinkedIn</a>
-    <div class="contact-link" style="cursor:default">${svg('pin')} ${RESUME.location}</div>
+    ${RESUME.cvFile ? `<a href="${RESUME.cvFile}" download class="contact-link-cv"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download CV</a>` : ''}
   </div>
   <div class="copy-line">Crafted with care &nbsp;·&nbsp; <span>${RESUME.name}</span> &nbsp;·&nbsp; ${RESUME.role}</div>
 </footer>
@@ -905,21 +947,28 @@ window.addEventListener('scroll', () => {
 /* ── HAMBURGER MENU ── */
 const hamburger = document.getElementById('nav-hamburger');
 const drawer    = document.getElementById('nav-drawer');
+const backdrop  = document.getElementById('nav-backdrop');
+const closeBtn  = document.getElementById('drawer-close');
 
 function toggleMenu(open) {
   hamburger.classList.toggle('open', open);
   drawer.classList.toggle('open', open);
+  backdrop.classList.toggle('open', open);
   hamburger.setAttribute('aria-expanded', open);
   drawer.setAttribute('aria-hidden', !open);
   document.body.style.overflow = open ? 'hidden' : '';
 }
 
-hamburger.addEventListener('click', () => {
-  toggleMenu(!drawer.classList.contains('open'));
-});
+hamburger.addEventListener('click', () => toggleMenu(true));
+closeBtn.addEventListener('click',  () => toggleMenu(false));
+backdrop.addEventListener('click',  () => toggleMenu(false));
 
 document.querySelectorAll('.drawer-link').forEach(link => {
   link.addEventListener('click', () => toggleMenu(false));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') toggleMenu(false);
 });
 </script>
 </body>
