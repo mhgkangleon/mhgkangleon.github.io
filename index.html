@@ -280,6 +280,7 @@ body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--t
     transition: none !important;
     animation: none !important;
   }
+  .edu-gear { animation: none !important; }
 }
 
 nav {
@@ -490,6 +491,31 @@ nav.scrolled { border-bottom-color: var(--border); }
 .edu-circle { width: 300px; height: 300px; border-radius: 50%; background: var(--blush); display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; position: relative; margin: 32px auto 0;}
 .edu-circle::before { content: ''; position: absolute; inset: -16px; border-radius: 50%; border: 1px solid var(--border); }
 .edu-circle::after { content: ''; position: absolute; inset: -32px; border-radius: 50%; border: 1px dashed var(--rose); opacity: 0.4; animation: spin 30s linear infinite; }
+
+/* Spinning gear logo */
+.edu-logo-wrap {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 32px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edu-gear {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 18s linear infinite;
+  transform-origin: center center;
+}
+.edu-inner {
+  position: absolute;
+  width: 74%;
+  height: 74%;
+  object-fit: contain;
+}
 @keyframes spin { to { transform: rotate(360deg); } }
 .edu-monogram { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 300; font-style: italic; color: var(--plum); line-height: 1; margin-bottom: 8px; }
 .edu-school-abbr { font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; color: #8C3A50; }
@@ -589,6 +615,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   .edu-circle::before { inset: -12px; }
   .edu-circle::after { inset: -24px; }
   .edu-monogram { font-size: 44px; }
+  .edu-logo-wrap { width: 200px; height: 200px; }
   .edu-content h3 { font-size: 22px; }
 
   .personal-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -652,6 +679,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   .edu-circle::before { inset: -14px; }
   .edu-circle::after { inset: -28px; }
   .edu-monogram { font-size: 52px; }
+  .edu-logo-wrap { width: 240px; height: 240px; }
   .edu-content h3 { font-size: 26px; }
 
   .personal-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -695,6 +723,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 
   .edu-block { grid-template-columns: 1fr 1fr; gap: 48px; }
   .edu-circle { width: 260px; height: 260px; margin-top: 32px;}
+  .edu-logo-wrap { width: 260px; height: 260px; }
   .edu-content h3 { font-size: 26px; }
 
   .personal-grid { grid-template-columns: repeat(2, 1fr); }
@@ -880,9 +909,9 @@ document.getElementById('app').innerHTML = `
     <h2 class="section-heading reveal"><em>Education</em></h2>
     <div class="edu-block">
       <div class="reveal from-left">
-        <div class="edu-circle">
-          <div class="edu-monogram">${RESUME.education.monogram}</div>
-          <div class="edu-school-abbr">University</div>
+        <div class="edu-logo-wrap">
+          <img src="citu-gear.png"  class="edu-gear"  alt="" aria-hidden="true" />
+          <img src="citu-inner.png" class="edu-inner" alt="Cebu Institute of Technology - University seal" />
         </div>
       </div>
       <div class="reveal from-right">
