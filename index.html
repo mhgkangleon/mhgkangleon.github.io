@@ -264,6 +264,16 @@ body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--t
 .reveal-delay-3 { transition-delay: 0.45s; }
 .reveal-delay-4 { transition-delay: 0.60s; }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.js-hide, .reveal.visible,
+  .reveal.from-left, .reveal.from-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   display: flex; justify-content: space-between; align-items: center;
