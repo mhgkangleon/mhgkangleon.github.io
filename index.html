@@ -9,7 +9,7 @@
 
 <script>
 /* ============================================================
-   ✏️  YOUR RESUME DATA — EDIT EVERYTHING IN THIS BLOCK ONLY
+   ✏️  RESUME DATA — EDIT EVERYTHING IN THIS BLOCK ONLY
    ============================================================
    - To change text: just retype it between the quotes
    - To add a bullet: add a new line like  "Your new bullet.",
@@ -39,7 +39,7 @@ const RESUME = {
 
   /* ── ABOUT SECTION ── */
   aboutQuote: "Meticulous by nature. Global by experience.",
-  aboutText:  "A certified QA Engineer (ISTQB-CTFL) with extensive experience testing e-commerce solutions, currently serving clients across Finland, the UK, and the US. Having worked within Japanese, Vietnamese, and Finnish companies throughout my career, I bring a rare global perspective to every product I touch. I specialize in mobile and web testing — obsessed with finding what others miss.",
+  aboutText:  "A certified QA Engineer (ISTQB-CTFL) with extensive experience testing e-commerce solutions, currently serving clients across Finland, the UK, and the US. Having worked within Japanese, Vietnamese, and Finnish companies throughout my career, I bring a rare global perspective to every product I touch. I specialize in mobile and web testing — with a genuine passion for quality at every layer.",
   aboutTags:  ["E-commerce QA", "Mobile Testing", "Web Testing", "Accessibility", "Agile · Scrum"],
 
   /* ── EXPERIENCE ──
@@ -252,9 +252,12 @@ html { scroll-behavior: smooth; }
 }
 body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1); }
+.reveal {
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
 .reveal.from-left  { transform: translateX(-50px); }
 .reveal.from-right { transform: translateX(50px); }
+.reveal.js-hide    { opacity: 0; }
 .reveal.visible    { opacity: 1; transform: translate(0); }
 .reveal-delay-1 { transition-delay: 0.15s; }
 .reveal-delay-2 { transition-delay: 0.30s; }
@@ -298,7 +301,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 .btn-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #EED8E4; padding: 10px 20px; border-radius: 40px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 400; border: 1px solid rgba(255,255,255,0.45); transition: all 0.3s; }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: var(--white); transform: translateY(-2px); }
 .scroll-hint { position: absolute; bottom: 36px; right: 64px; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
-.scroll-hint span { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #A07888; writing-mode: vertical-rl; }
+.scroll-hint span { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #C8A8B8; writing-mode: vertical-rl; }
 .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollLine 2s ease-in-out infinite; }
 @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -323,7 +326,8 @@ nav.scrolled { border-bottom-color: var(--border); }
 .section-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 12px; display: flex; align-items: center; gap: 14px; }
 .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold-dk); }
 .section-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; color: var(--plum-dk); margin-bottom: 60px; }
-.section-heading em { font-style: italic; color: var(--rose); }
+.section-heading em { font-style: italic; color: #8C3A50; }
+.skills-inner .section-heading em { color: #ECA8B8; }
 
 .timeline { position: relative; padding-left: 32px; }
 .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--rose), transparent); }
@@ -398,12 +402,12 @@ nav.scrolled { border-bottom-color: var(--border); }
 .contact-footer::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(201,123,138,0.1) 0%, transparent 65%); }
 .contact-footer h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 20px; position: relative; }
 .contact-footer h2 em { font-style: italic; color: var(--rose); }
-.contact-footer > p { font-size: 15px; color: #D4B8C4; margin-bottom: 48px; position: relative; }
+.contact-footer > p { font-size: 15px; color: #EDD5E0; margin-bottom: 48px; position: relative; }
 .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 60px; position: relative; }
 .contact-link { display: flex; align-items: center; gap: 10px; color: #EED8E4; text-decoration: none; font-size: 13px; border: 1px solid rgba(255,255,255,0.35); padding: 12px 24px; border-radius: 40px; transition: all 0.2s; }
 .contact-link:hover { color: var(--gold); border-color: var(--gold); }
 .contact-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.copy-line { font-size: 11px; color: #A07888; letter-spacing: 0.1em; }
+.copy-line { font-size: 11px; color: #C8A8B8; letter-spacing: 0.1em; }
 .copy-line span { color: #ECA8B8; }
 
 @media (max-width: 768px) {
@@ -622,9 +626,21 @@ document.getElementById('app').innerHTML = `
 
 /* ── SCROLL REVEAL ── */
 const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.remove('js-hide');
+      el.target.classList.add('visible');
+    }
+  });
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.reveal, .t-item').forEach(el => revealObs.observe(el));
+
+document.querySelectorAll('.reveal, .t-item').forEach(el => {
+  if (!el.classList.contains('from-left') && !el.classList.contains('from-right')) {
+    el.style.transform = 'translateY(40px)';
+  }
+  el.classList.add('js-hide');
+  revealObs.observe(el);
+});
 
 /* ── STICKY NAV ── */
 window.addEventListener('scroll', () => {
